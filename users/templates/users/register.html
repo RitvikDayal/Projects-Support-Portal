@@ -1,0 +1,40 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'users/css/styles.min.css' %}">
+</head>
+
+<body>
+    <!-- Start: Contact Form Clean -->
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <div class="contact-clean">
+        <form method="POST" action="">
+        {% csrf_token %}
+            <h2 class="text-center">Create an account</h2>
+            <div class="form-group">
+            {{ form|crispy }}
+            </div>
+            <div class="form-group"><button class="btn btn-primary" type="submit">Submit</button></div>
+            <div class="container text-center"><small class="text-center">Already have an account?&nbsp;</small><a href="#" style="font-size: 13px;">Login</a></div>
+        </form>
+    </div>
+    <!-- End: Contact Form Clean -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
