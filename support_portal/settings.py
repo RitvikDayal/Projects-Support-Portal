@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bug_report.apps.BugReportConfig',
     'users.apps.UsersConfig',
     'projects.apps.ProjectsConfig',
     'crispy_forms',

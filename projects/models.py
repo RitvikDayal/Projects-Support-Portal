@@ -3,7 +3,7 @@ from django.utils import timezone
 from PIL import Image
 from django.contrib.auth.models import User
 
-class Projects(models.Model):
+class Project(models.Model):
     tag_choices = (
         ('personal', 'Personal'),
         ('freelance', 'Freelance'),
@@ -12,7 +12,7 @@ class Projects(models.Model):
 
     title = models.CharField(max_length=100)
     project_image = models.ImageField(default='default_project.png', upload_to='project_pics')
-    summary = models.CharField(max_length=120)
+    summary = models.TextField()
     date_posted = models.DateTimeField()
     author = models.CharField(max_length=120)
     deploy_link = models.URLField(max_length=500)

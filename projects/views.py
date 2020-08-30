@@ -3,7 +3,7 @@ from .models import *
 
 def home(request):
 
-    projects = Projects.objects.all()
+    projects = Project.objects.all()
 
     context={
         'projects': projects,
