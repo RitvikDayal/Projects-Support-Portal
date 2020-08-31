@@ -14,10 +14,14 @@
 <body>
     <!-- Start: Navigation with Button -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-        <div class="container"  style="text-transform: capitalize;"><a class="navbar-brand" href="#">Projects | Ritvik Dayal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="#">Projects by Ritvik Dayal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
-                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a class="login" href="{% url 'login' %}">Log In</a><a class="btn btn-light action-button" role="button" href="{% url 'signup' %}">Sign Up</a></span></div>
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"><a class="login" href="{% url 'logout' %}">Log Out</a></span></div>
+                {% else %}
+                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"><a class="login" href="{% url 'login' %}">Log In</a><a class="btn btn-light action-button" role="button" href="{% url 'signup' %}">Sign Up</a></span></div>
+                {% endif %}
         </div>
     </nav>
     <!-- End: Navigation with Button -->

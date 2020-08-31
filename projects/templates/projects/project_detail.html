@@ -13,29 +13,45 @@
 </head>
 
 <body>
+<style>
+.feedback{
+    margin: 20px;
+    border-block-color: black;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.bug{
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+</style>
     <!-- Start: Article Clean -->
     <div class="article-clean">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <!-- Start: Intro -->
+                    {% for project in projects %}
+                    {% if project.id == project_id %}
                     <div class="intro">
-                        <h1 class="text-center">{{ object.title }}</h1>
+                        <h1 class="text-center">{{ project.title }}</h1>
                         <!-- Start: Date and Author -->
-                        <p class="text-center"><span class="by">by</span> <a href="#">{{ object.author }}</a><span class="date">{{ object.date_posted }} </span></p>
-                        <!-- End: Date and Author --><img class="img-fluid" src="{{object.project_image.url}}"></div>
+                        <p class="text-center"><span class="by">by</span> <a href="#">{{ project.author }}</a> <span class="date">{{ project.date_posted }} </span></p>
+                        <!-- End: Date and Author --><img class="img-fluid" src="{{project.project_image.url}}"></div>
                     <!-- End: Intro -->
                     <!-- Start: Text -->
                     <div class="text">
-                        <p class="text-center"><span>{{ object.summary }}</span></p>
-                        <p class="text-center">{{ object.description}}</p>
+                        <p class="text-center"><span>{{ project.summary }}</span></p>
+                        <p class="text-center">{{ project.description}}</p>
                         <figure>
                             <div class="text-center">
-                                <a class="btn btn-danger btn-lg text-center border rounded shadow" href="{% url 'bugReport' object.id %}"
+                                <a class="btn btn-danger btn-lg text-center border rounded shadow" href="{% url 'bugReport' project_id %}"
                                 role="button" style="width: 170px;height: 60px;margin: 10px;padding-top:5px!important; color: rgb(255,255,255);">
                                     Report Bug
                                 </a>
-                                <a class="btn btn-info btn-lg text-center border rounded shadow"
+                                <a class="btn btn-info btn-lg text-center border rounded shadow" href="{% url 'feedBack' project_id %}"
                                 role="button" style="width: 170px;height: 60px;margin: 10px;padding-top:5px!important; color: rgb(255,255,255);">
                                     Feedback
                                 </a>
@@ -44,10 +60,52 @@
                     </div>
                     <!-- End: Text -->
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
     <!-- End: Article Clean -->
+
+    <!-- Tabs Container -->
+    <div class="container" class="text-center" style="padding: 65px;">
+        <div>
+            <ul class="nav nav-pills nav-justified text-center border rounded" style="padding: 45px;">
+                <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="pill" href="#tab-1">FEEDBACKS</a></li>
+                <li class="nav-item"><a class="nav-link" role="tab" data-toggle="pill" href="#tab-2">BUGS</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" role="tabpanel" id="tab-1">
+                <div class="row">
+                {% for feedback in feedbacks %}
+                {% if feedback.project.id == project_id %}
+                    <div class="col-sm-6 col-md-4 text-left feedback"><a href="#"></a>
+                        <h3 class="name">{{feedback.feedback_title}}</h3>
+                        <h5 class="name">{{feedback.reported_by.fname}}</h5>
+                        <h6 class="name">{{feedback.date_posted}}</h6>
+                        <p class="description">{{feedback.review}}</p>
+                        <p class="description"><strong>Ratings</strong>: {{feedback.rating}}/5</p><a class="action" href="#"></a>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+                </div>
+                <div class="tab-pane" role="tabpanel" id="tab-2">
+                {% for bug in bugs %}
+                {% if bug.project.id == project_id %}
+                    <div class="col-sm-6 col-md-4 bug">
+                        <img class="img-fluid" src="{{bug.screenshot.url}}">
+                        <h3 class="name">{{bug.bug_title}}</h3>
+                        <h5 class="name">{{bug.reported_by.fname}}</h5>
+                        <h6 class="name">{{bug.date_posted}}</h6>
+                        <p class="description">{{bug.bug_description}}</p>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div> 
     <!-- Start: Footer Dark -->
     <div class="footer-dark">
         <footer>
