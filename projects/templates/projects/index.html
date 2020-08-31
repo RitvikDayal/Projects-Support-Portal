@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>home</title>
+    <title>Projects by Ritvik</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{% static 'projects/css/styles.min.css' %}">
@@ -14,10 +14,10 @@
 <body>
     <!-- Start: Navigation with Button -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-        <div class="container"><a class="navbar-brand" href="#">Company Name</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"  style="text-transform: capitalize;"><a class="navbar-brand" href="#">Projects | Ritvik Dayal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
-                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a class="login" href="{% url 'login' %}">Log In</a><a class="btn btn-light action-button" role="button" href="{% url 'signup' %}">Sign Up</a></span></div>
         </div>
     </nav>
     <!-- End: Navigation with Button -->
@@ -26,64 +26,28 @@
         <div class="container">
             <!-- Start: Intro -->
             <div class="intro">
-                <h2 class="text-center">Projects </h2>
+                <h2 class="text-center" style="text-transform: capitalize;">Projects</h2>
                 <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
             </div>
             <!-- End: Intro -->
             <!-- Start: Projects -->
             <div class="row projects">
-            {% for project in projects %}
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="{% url 'project-detail' project.id %}"><img class="img-fluid" src="{{project.project_image.url}}"></a></div>
-                        <div class="col">
-                            <h3 class="name">{{ project.title }}</h3>
-                            <p class="description">{{ project.summary }}</p>
-                            <small>
-                            <br>
-                            <p style="margin-bottom: 1px;">Start Date: {{project.date_posted}}</p>
-                            <a href="{{project.deploy_link}}" >Live Link</a>
-                            </small> 
+                {% for project in projects %}
+                    <div class="col-sm-6 item">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-5"><a href="{% url 'project-detail' project.id %}"><img class="img-fluid" src="{{project.project_image.url}}"></a></div>
+                            <div class="col">
+                                <h3 class="name">{{ project.title }}</h3>
+                                <p class="description">{{ project.summary }}</p>
+                                <small>
+                                <br>
+                                <p style="margin-bottom: 1px;">Start Date: {{project.date_posted}}</p>
+                                <a href="{{project.deploy_link}}" >Live Link</a>
+                                </small> 
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'projects/img/desk.jpg' %}"></a></div>
-                        <div class="col">
-                            <h3 class="name">Project Name</h3>
-                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'projects/img/building.jpg' %}"></a></div>
-                        <div class="col">
-                            <h3 class="name">Project Name</h3>
-                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'projects/img/loft.jpg' %}"></a></div>
-                        <div class="col">
-                            <h3 class="name">Project Name</h3>
-                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'projects/img/minibus.jpeg' %}"></a></div>
-                        <div class="col">
-                            <h3 class="name">Project Name</h3>
-                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <!-- End: Projects -->
         </div>
