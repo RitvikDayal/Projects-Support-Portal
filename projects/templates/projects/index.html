@@ -35,7 +35,7 @@
             {% for project in projects %}
                 <div class="col-sm-6 item">
                     <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="{% url 'bugReport' project.id %}"><img class="img-fluid" src="{{project.project_image.url}}"></a></div>
+                        <div class="col-md-12 col-lg-5"><a href="{% url 'project-detail' project.id %}"><img class="img-fluid" src="{{project.project_image.url}}"></a></div>
                         <div class="col">
                             <h3 class="name">{{ project.title }}</h3>
                             <p class="description">{{ project.summary }}</p>

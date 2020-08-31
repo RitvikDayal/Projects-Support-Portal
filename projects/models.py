@@ -12,7 +12,8 @@ class Project(models.Model):
 
     title = models.CharField(max_length=100)
     project_image = models.ImageField(default='default_project.png', upload_to='project_pics')
-    summary = models.TextField()
+    summary = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
     date_posted = models.DateTimeField()
     author = models.CharField(max_length=120)
     deploy_link = models.URLField(max_length=500)
