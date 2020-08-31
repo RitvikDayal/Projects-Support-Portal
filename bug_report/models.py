@@ -6,7 +6,7 @@ from django.urls import reverse
 
 class Bug(models.Model):
     reported_by: models.ForeignKey(User, on_delete=models.CASCADE)
-    project = models.OneToOneField(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     bug_title = models.CharField(max_length=150)
     bug_description = models.TextField()
     screenshot = models.ImageField(blank=True, null=True, upload_to='Bug_Reports')

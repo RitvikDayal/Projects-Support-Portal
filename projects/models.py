@@ -19,7 +19,7 @@ class Project(models.Model):
     tag = models.CharField(max_length=20,choices=tag_choices, default='personal')
 
     def save(self, *args, **kwargs):
-        super(Projects, self).save(*args, **kwargs)
+        super(Project, self).save(*args, **kwargs)
 
     def __str__(self):
         return 'Title: {}\nAuthor: {}'.format(self.title, self.author)
