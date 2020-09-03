@@ -1,18 +1,9 @@
+{% extends 'projects/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Logout</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'users/css/styles.min.css' %}">
-</head>
-
-<body>
-    <!-- Start: Newsletter Subscription Form -->
-    <div class="newsletter-subscribe">
+    <!-- Start: Logout box -->
+    <div class="newsletter-subscribe" style="height: 70vh; margin-top: 70px;">
         <div class="container">
             <!-- Start: Intro -->
             <div class="intro">
@@ -20,21 +11,23 @@
                 <p class="text-center">Please visit soon again. </p>
             </div>
             <!-- End: Intro -->
-            <</div>
-    </div>
-    <!-- End: Newsletter Subscription Form -->
-    <!-- Start: 1 Row 2 Columns -->
-    <div class="text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 col-md-6 text-right"><button class="btn btn-primary" type="submit" style="margin-left: 10px;">Home</button></div>
-                <div class="col-5 col-md-6 text-left"><a class="btn btn-info" role="button" href="#" style="background-color: #5cd8e9;margin-right: 10px;">Login</a></div>
+        </div>
+        <!-- Start: 1 Row 2 Columns -->
+        <div class="text-center">
+            <div class="container" style="margin-bottom: 50px;">
+                <div class="row">
+                    <div class="col-6 col-md-6 text-right">
+                        <a class="btn btn-info" role="button" href="{% url 'home' %}" style="background-color: green;margin-right: 10px;">Home</a>
+                    </div>
+                    <div class="col-5 col-md-6 text-left">
+                        <a class="btn btn-info" role="button" href="{% url 'login' %}" style="background-color: #5cd8e9;margin-right: 10px;">Login</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- End: 1 Row 2 Columns -->
     </div>
-    <!-- End: 1 Row 2 Columns -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- End: Logout box -->
+    
 
-</html>
+{% endblock content %}
