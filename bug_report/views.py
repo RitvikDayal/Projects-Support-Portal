@@ -17,4 +17,8 @@ def bug_register(request, pk):
             messages.warning(request, f'Please fill all the mandatory fields!')
     else:
         form = BugReportForm()
-    return render(request, 'bug_report/report.html', {'form': form})
+    context = {
+        'form': form,
+        'title': 'Register Bugs'
+    }
+    return render(request, 'bug_report/report.html', context=context)

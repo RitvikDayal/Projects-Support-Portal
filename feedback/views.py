@@ -16,4 +16,8 @@ def bug_register(request, pk):
             messages.warning(request, f'Please fill all the mandatory fields!')
     else:
         form = FeedbackForm()
-    return render(request, 'feedback/feedbackForm.html', {'form': form})
+        context = {
+        'form': form,
+        'title': 'Feedbacks Submition'
+    }
+    return render(request, 'feedback/feedbackForm.html', context=context)

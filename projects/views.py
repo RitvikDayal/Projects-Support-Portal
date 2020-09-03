@@ -10,6 +10,7 @@ def home(request):
 
     context={
         'projects': projects,
+        'title': 'Ritvik Dayal'
     }
 
     return render(request, 'projects/index.html', context=context)
@@ -23,7 +24,8 @@ def project_detail(request, pk):
         'projects': projects,
         'bugs': bugs,
         'feedbacks': feedbacks,
-        'project_id': pk
+        'project_id': pk,
+        'title': 'Project Detail'
     }
 
     return render(request, 'projects/project_detail.html', context=context)

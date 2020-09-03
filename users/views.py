@@ -17,4 +17,9 @@ def register(request):
             messages.warning(request, f'Information entered is not vaalid!\nCheck details and try again.')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        context = {
+        'form': form,
+        'title': 'Registeration'
+        }
+    return render(request, 'users/register.html', context=context)
+
