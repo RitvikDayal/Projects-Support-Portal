@@ -16,7 +16,7 @@ class Project(models.Model):
     description = models.TextField(null=True, blank=True)
     date_posted = models.DateTimeField()
     author = models.CharField(max_length=120)
-    deploy_link = models.URLField(max_length=500)
+    deploy_link = models.URLField(max_length=500, blank=True, null=True)
     tag = models.CharField(max_length=20,choices=tag_choices, default='personal')
 
     def save(self, *args, **kwargs):
